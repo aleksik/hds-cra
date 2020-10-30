@@ -4,6 +4,10 @@ const { spawn } = require("child_process");
 const exec = util.promisify(require("child_process").exec);
 const simpleGit = require("simple-git");
 
+const ENABLE_TOKENS = true;
+const ENABLE_CORE = true;
+const ENABLE_REACT = true;
+
 const PACKAGE_FILENAME = {
   react: `hds-react-${Date.now()}.tgz`,
   "design-tokens": `hds-design-tokens-${Date.now()}.tgz`,
@@ -96,9 +100,9 @@ const install = async (packageName) => {
     let stashed = false;
 
     // Build packages
-    await build("design-tokens");
-    await build("core");
-    await build("react");
+    if (ENABLE_TOKENS) await build("design-tokens");
+    if (ENABLE_CORE) await build("core");
+    if (ENABLE_REACT) await build("react");
 
     // Stash changes
     if (await isModified()) {
@@ -107,17 +111,23 @@ const install = async (packageName) => {
     }
 
     // Pack and install hds-design-tokens
-    await pack("design-tokens");
-    await install("design-tokens");
+    if (ENABLE_TOKENS) {
+      await pack("design-tokens");
+      await install("design-tokens");
+    }
 
     // Pack and install hds-core
-    await pack("core");
-    await install("core");
+    if (ENABLE_CORE) {
+      await pack("core");
+      await install("core");
+    }
 
     // Pack and install hds-react
-    await prepareReact();
-    await pack("react");
-    await install("react");
+    if (ENABLE_REACT) {
+      await prepareReact();
+      await pack("react");
+      await install("react");
+    }
 
     // Clean
     await gitClean();
