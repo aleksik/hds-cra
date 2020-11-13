@@ -5508,26 +5508,27 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
-hds-core@0.15.0:
-  version "0.15.0"
-  resolved "file:./hds-core-1604047568404.tgz#288a09c91844755963a8cf232cdde00ea929481f"
+hds-core@0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/hds-core/-/hds-core-0.16.0.tgz#a5041cb77327ddfb27a803e2230c952013526f67"
+  integrity sha512-8prQ+XCjdg59wMggog+5ARFT6spmfXy4Z4h24BxzmCy8F1WB3ufD5fFPelyGWM3RbVVL73/64VPR4dtT0cEm+g==
 
-hds-design-tokens@0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/hds-design-tokens/-/hds-design-tokens-0.15.0.tgz#4c5da798d6a1c2170f2742db628ef94557c3f74e"
-  integrity sha512-8LZCQ/RPGX6o+9aNz55XeqSRXpOINSbmQEnyJU+MC+UC3ARTBeiyoaZ97BEb5zxSz/didrCsmiMto0CI6pkptA==
+hds-design-tokens@0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/hds-design-tokens/-/hds-design-tokens-0.16.0.tgz#7b86ed4231063b72175d7a7d9776bab93925dea0"
+  integrity sha512-N0xrNc/sgahP98PTHZxdofp8+tfZCxjcZWcZ1NjUHPnXPijQBkEQ1L/FfqMb8DuaNkcja7OKTFLIUZXniDw1Cw==
 
-hds-react@0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/hds-react/-/hds-react-0.15.0.tgz#a4bd90d6874ff64a4ab0d36374d7f686c1838a15"
-  integrity sha512-CG1ISYo8ZTHxhBkVix+rV0J83XHCjvuTYCqQA2KxkKjJHo8OnKq6Wwz2mqb17wak0jY4dhyFRI+NQInDi/cwIQ==
+hds-react@0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/hds-react/-/hds-react-0.16.0.tgz#be6dd525296f7728035418aff498cf0ff960767d"
+  integrity sha512-hL1mp4BTv/4NO3IZien3DO9VVtYEW9HoeFZDaW5f60XTg/OkijzFFVcZNKDic/ORHsqe7BA5UQeMU1NdeqHk6Q==
   dependencies:
     "@babel/runtime" "7.11.2"
     "@juggle/resize-observer" "3.2.0"
     "@popperjs/core" "2.5.3"
     "@react-aria/visually-hidden" "3.2.0"
     downshift "6.0.6"
-    hds-core "0.15.0"
+    hds-core "0.16.0"
     lodash.isequal "4.5.0"
     lodash.uniqueid "4.0.1"
     react-merge-refs "1.1.0"
