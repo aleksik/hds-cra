@@ -5,6 +5,7 @@ import {
   LoadingSpinner,
   Tag,
   Notification,
+  Tabs,
 } from "./components";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <LoadingSpinner />
       <SelectionGroup />
       <Notification />
+      <Tabs />
     </div>
   );
 }

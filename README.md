@@ -1,10 +1,24 @@
-# Getting Started with Create React App
+# hds-cra
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a [Create React App](https://github.com/facebook/create-react-app) project which can be used to test Helsinki Design System components.
+
+## Setup
+
+This project assumes that it has been cloned as a sibling to the helsinki-design-sytem project. So your directory structure should be something like this:
+
+```
+projects/
+├─ helsinki-design-system/
+├─ hds-cra/
+```
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn hds`
+
+Builds, packages and installs `hds-core`, `hds-design-tokens` and `hds-react` from your local `helsinki-design-system` repository. 
 
 ### `yarn start`
 

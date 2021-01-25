@@ -1,10 +1,9 @@
 import React from "react";
-import { Tag as HDSTag, Notification } from "hds-react";
+import { Tag as HDSTag } from "hds-react";
 
 export const Tag = () => {
   const onTagClick = () => alert("Tag clicked");
   const onTagRemove = () => alert("Tag removed");
-  const marginRight = { marginRight: "var(--spacing-m)" };
 
   const customTheme = {
     "--tag-background": "var(--color-engel)",
