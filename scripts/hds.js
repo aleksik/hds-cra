@@ -7,11 +7,13 @@ const simpleGit = require("simple-git");
 const ENABLE_TOKENS = true;
 const ENABLE_CORE = true;
 const ENABLE_REACT = true;
+const ENABLE_JS = true;
 
 const PACKAGE_FILENAME = {
   react: `hds-react-${Date.now()}.tgz`,
   "design-tokens": `hds-design-tokens-${Date.now()}.tgz`,
   core: `hds-core-${Date.now()}.tgz`,
+  "hds-js": `hds-js-${Date.now()}.tgz`,
 };
 
 const CRA_DIR = path.resolve(__dirname, "../");
@@ -32,12 +34,7 @@ const isModified = async () => {
 
 const stash = async () => {
   console.log("Stashing changes...");
-  return await git.stash([
-    "push",
-    "--include-untracked",
-    "--message",
-    `hds-cra`,
-  ]);
+  return await git.stash(["push", "--include-untracked", "--message", `hds-cra`]);
 };
 
 const gitClean = async () => {
@@ -50,10 +47,10 @@ const stashPop = async () => {
   return await git.stash(["pop"]);
 };
 
-const build = (packageName) => {
-  console.log(`Building ${packageName}...`);
+const build = (packageName, command) => {
+  console.log(`Building ${command || packageName}...`);
   return new Promise((resolve, reject) => {
-    const build = spawn("yarn", ["build"], {
+    const build = spawn("yarn", [command || "build"], {
       cwd: path.join(HDS_DIR, `./packages/${packageName}`),
       env: { NODE_ENV: "production", PATH: process.env.PATH },
     });
@@ -80,12 +77,18 @@ const prepareReact = async () => {
   });
 };
 
+const prepareHdsJs = async () => {
+  console.log("Preparing hds-js...");
+  await exec(`cp -r ./lib/. .`, {
+    cwd: path.join(HDS_DIR, "./packages/hds-js"),
+  });
+};
+
 const pack = async (packageName) => {
   console.log(`Packing ${packageName}...`);
-  await exec(
-    `yarn pack --filename ${path.join(CRA_DIR, PACKAGE_FILENAME[packageName])}`,
-    { cwd: path.join(HDS_DIR, "./packages", packageName) }
-  );
+  await exec(`yarn pack --filename ${path.join(CRA_DIR, PACKAGE_FILENAME[packageName])}`, {
+    cwd: path.join(HDS_DIR, "./packages", packageName),
+  });
 };
 
 const install = async (packageName) => {
@@ -103,6 +106,7 @@ const install = async (packageName) => {
     if (ENABLE_TOKENS) await build("design-tokens");
     if (ENABLE_CORE) await build("core");
     if (ENABLE_REACT) await build("react");
+    if (ENABLE_JS) await build("react", "build:hds-js");
 
     // Stash changes
     if (await isModified()) {
@@ -127,6 +131,13 @@ const install = async (packageName) => {
       await prepareReact();
       await pack("react");
       await install("react");
+    }
+
+    // Pack and install hds-js
+    if (ENABLE_JS) {
+      await prepareHdsJs();
+      await pack("hds-js");
+      await install("hds-js");
     }
 
     // Clean

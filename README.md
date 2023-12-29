@@ -14,11 +14,15 @@ projects/
 
 ## Available Scripts
 
+Note: With HDS v3, you'll need node 18 to install packages with `yarn`, but node 16 to run `yarn start`. This a react scripts v4 issue.
+
 In the project directory, you can run:
 
 ### `yarn hds`
 
-Builds, packages and installs `hds-core`, `hds-design-tokens` and `hds-react` from your local `helsinki-design-system` repository. 
+Builds, packages and installs `hds-core`, `hds-design-tokens`, `hds-react` and `hds-js` from your local `helsinki-design-system` repository.
+
+Note: once installed, the created tar-packages are in the yarn.lock. If `yarn hds` is run multiple times, it may throw when a tar-file is not found anymore. Remove the yarn.lock to fix this.
 
 ### `yarn start`
 

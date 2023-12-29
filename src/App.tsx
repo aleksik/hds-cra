@@ -1,12 +1,7 @@
 import React from "react";
+
 import "./App.css";
-import {
-  SelectionGroup,
-  LoadingSpinner,
-  Tag,
-  Notification,
-  Tabs,
-} from "./components";
+import { Login, Cookies, SelectionGroup, LoadingSpinner, Tag, Notification, Tabs } from "./components";
 
 function App() {
   return (
@@ -16,6 +11,8 @@ function App() {
       <SelectionGroup />
       <Notification />
       <Tabs />
+      <Cookies />
+      <Login />
     </div>
   );
 }
